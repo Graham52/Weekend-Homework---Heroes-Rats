@@ -1,7 +1,7 @@
 const assert = require('assert');
 const Hero = require('../hero.js');
 
-describe('Hero', function() {
+describe('Hero tests', function() {
 
   let hero1;
 
@@ -10,7 +10,6 @@ describe('Hero', function() {
       'John Doe',
       'Health is good',
       'Brownie',
-      'Hi my name is John Doe',
       ['Clean the car'])
   });
 
@@ -27,7 +26,7 @@ describe('Hero', function() {
   });
 
   it('should be able to talk', function() {
-    assert.strictEqual(hero1.talk, 'Hi my name is John Doe');
+    assert.strictEqual(hero1.talk(), 'Hello my name is John Doe !');
   });
 
   it('should have a task', function() {
