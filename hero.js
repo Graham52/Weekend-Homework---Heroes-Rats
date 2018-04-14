@@ -21,10 +21,8 @@ Hero.prototype.eatFood = function(food){
    }
 }
 
-
 Hero.prototype.completeTask = function (task) {
   task.setComplete();
-  // this.addMoney(quest.reward);
 };
 
 Hero.prototype.completedTasks = function () {
@@ -39,15 +37,12 @@ Hero.prototype.incompletedTasks = function () {
   });
 }
 
-
-// Hero.prototype.filterByComplete = function () {
-//   const completedQuests = this.questList.filter(quest => {return quest.status});
-//   return completedQuests;
-// };
-//
-// Hero.prototype.filterByUncomplete = function () {
-//   const uncompletedQuests = this.questList.filter(quest => {return !quest.status});
-//   return uncompletedQuests;
-// };
+Hero.prototype.sortTasksBy = function (property) {
+  const tasksArray = this.tasks;
+  const sortedTasksArray = tasksArray.sort(function(task1, task2) {
+    return task1[property] - task2[property];
+  })
+  return sortedTasksArray;
+};
 
 module.exports = Hero;

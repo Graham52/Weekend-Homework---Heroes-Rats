@@ -10,6 +10,7 @@ describe('Hero tests', function() {
   let crisps;
   let shopping;
   let payBill;
+  let cleanCar;
 
   beforeEach(function() {
     hero1 = new Hero(
@@ -21,7 +22,8 @@ describe('Hero tests', function() {
       brownie = new Food('Brownie', 20)
 
       shopping = new Task(2, 10, 5);
-      payBill = new Task(1, 10, 10);
+      payBill = new Task(1, 20, 10);
+      cleanCar = new Task(3, 30, 8)
   });
 
   it('should have an name', function() {
@@ -72,6 +74,30 @@ describe('Hero tests', function() {
         hero1.addTask(payBill);
         hero1.completeTask(payBill);
         assert.deepStrictEqual(hero1.incompletedTasks(), [shopping]);
+      });
+
+      it('should be able to sort tasks by difficulty', function() {
+        hero1.addTask(shopping);
+        hero1.addTask(payBill);
+        hero1.addTask(cleanCar);
+        hero1.sortTasksBy('difficulty');
+        assert.deepStrictEqual(hero1.tasks, [payBill, shopping, cleanCar])
+      });
+
+      it('should be able to sort tasks by urgency', function() {
+        hero1.addTask(payBill);
+        hero1.addTask(cleanCar);
+        hero1.addTask(shopping);
+        hero1.sortTasksBy('urgency');
+        assert.deepStrictEqual(hero1.tasks, [shopping, payBill, cleanCar])
+      });
+
+      it('should be able to sort tasks by reward', function() {
+        hero1.addTask(cleanCar);
+        hero1.addTask(payBill);
+        hero1.addTask(shopping);
+        hero1.sortTasksBy('reward');
+        assert.deepStrictEqual(hero1.tasks, [shopping, cleanCar, payBill])
       });
 
   })
