@@ -14,10 +14,14 @@ Hero.prototype.addTask = function (task) {
 }
 
 Hero.prototype.eatFood = function(food){
-   if(food.name === this.favFood){
-     this.health += (1.5 * food.replenishmentValue);
-   } else {
-     this.health += food.replenishmentValue;
+  if (food.poisoned) {
+    this.health -= 5;
+    }
+  else if(food.name === this.favFood){
+    this.health += (1.5 * food.replenishmentValue);
+    }
+  else {
+    this.health += food.replenishmentValue;
    }
 }
 

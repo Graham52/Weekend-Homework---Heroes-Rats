@@ -17,4 +17,13 @@ describe('Food tests', function (){
     assert.strictEqual(bread.replenishmentValue, 3);
   });
 
+  it('should not be poisoned to start', function() {
+    assert.strictEqual(false, bread.poisoned);
+  })
+
+  it('should be able to get poisoned', function() {
+    bread.poisonFood();
+    assert.strictEqual(true, bread.poisoned);
+  })
+
 })

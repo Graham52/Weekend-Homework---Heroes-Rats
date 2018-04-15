@@ -2,7 +2,7 @@ const assert = require('assert');
 const Hero = require('../hero.js');
 const Food = require('../food.js');
 const Task = require('../task.js');
-
+const Rat = require('../rat.js');
 
 describe('Hero tests', function() {
 
@@ -11,6 +11,9 @@ describe('Hero tests', function() {
   let shopping;
   let payBill;
   let cleanCar;
+  let brownie;
+  let bread;
+  let rat;
 
   beforeEach(function() {
     hero1 = new Hero(
@@ -20,10 +23,13 @@ describe('Hero tests', function() {
 
       crisps = new Food('Crisps', 10)
       brownie = new Food('Brownie', 20)
+      bread = new Food('Bread', 5)
 
-      shopping = new Task(2, 10, 5);
-      payBill = new Task(1, 20, 10);
+      shopping = new Task(2, 10, 5)
+      payBill = new Task(1, 20, 10)
       cleanCar = new Task(3, 30, 8)
+
+      rat = new Rat
   });
 
   it('should have an name', function() {
@@ -57,6 +63,12 @@ describe('Hero tests', function() {
       hero1.eatFood(brownie);
       assert.strictEqual(hero1.health, 130);
     });
+
+    it('should decrease health if it eats poisoned food', function() {
+      rat.touchFood(bread);
+      hero1.eatFood(bread);
+      assert.strictEqual(hero1.health, 95);
+    })
 
   })
 
